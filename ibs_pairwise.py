@@ -50,15 +50,10 @@ def compute_ibs_score(file1, file2):
         geno1 = dict1[rsid]
         geno2 = dict2[rsid]
         
-        # Both genotypes should already be validated, but double-check
         if len(geno1) == 2 and len(geno2) == 2:
             score = ibs_score(geno1, geno2)
             total_score += score
             snp_count += 1
-    
-    if snp_count == 0:
-        print("No overlapping, valid autosomal SNPs found between these two files.")
-        return
     
     # Max possible per SNP is 2
     ibs_similarity = total_score / (2 * snp_count)
